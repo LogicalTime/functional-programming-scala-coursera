@@ -13,28 +13,30 @@ def sumFactorials(a: Int, b: Int) = sum(fact)
 def fact(x: Int): Int = if (x == 0) 1 else fact(x - 1)
 
 
-/*
 
-
-
-
-def f(args1)...(argsn?1) = {def g(argsn) = E; g}
-
-*/
 
 def add(x:Int, y:Int) = x + y
 def add2(x:Int) = (y:Int) => x + y
 def add3(x:Int)(y:Int) = x + y
 
-//def f(arg1: Int => Int)(a: Int, b: Int): Int =
-//  if (a > b) 0 else arg1(a) + f(arg1)(a + 1, b)
-// TODO can you make this work with named functions?
+
+
+/*
+
+def f(args1)...(argsn?1) = {def g(argsn) = E; g}
+
+*/
+
 {
   def f(arg1: Int => Int)(a: Int, b: Int): Int =
     if (a > b) 0 else arg1(a) + f(arg1)(a + 1, b)
 }
 
+{
+  def f(arg1: Int => Int): (Int, Int) => (Int) =
+  {def g(a: Int, b: Int) =  if (a > b) 0 else arg1(a) + f(arg1)(a + 1, b); g _}
 
+}
 
 {
   def f(arg1: Int => Int): (Int, Int) => Int =
