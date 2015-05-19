@@ -24,5 +24,18 @@ expressed using def as follows:
 def f(x1 : T1, ..., xn : Tn) = E; f
 */
 (x: Int) => x * x * x
-// Then why doesn't this work?
-//{def f(x: Int): Int = x * x * x; f}
+
+
+{
+  def f(x: Int): Int =  x * x * x; f _
+}
+
+
+
+{
+  def f(x: Int): Int = {
+    x * x * x
+  }
+  f _
+}
+
